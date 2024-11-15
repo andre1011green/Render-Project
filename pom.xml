@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Practice</groupId>
-	<artifactId>Practice-Project</artifactId>
+	<artifactId>Practice-Project-2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Practice-Project</name>
+	<name>Employee Reimbursement System</name>
 	<description>Implement-Custom-User-Details</description>
 	<properties>
 		<java.version>17</java.version>

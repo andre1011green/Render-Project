@@ -1,0 +1,39 @@
+
+services:
+  db:
+    image: dejwcake/postgres16  # You can specify your preferred PostgreSQL version
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "Mayday"
+      POSTGRES_DB: "sunnyday"
+      #POSTGRES_DATA: /var/lib/postgresql/data/db-data
+
+    volumes:
+      - db-data:/var/lib/postgresql/data  # Persists PostgreSQL data between container restarts
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the local init-db directory to load SQL scripts on container start
+
+    ports:
+      - "5433:5432"  # Expose PostgreSQL port for local access (optional)
+    networks:
+      - springboot-network
+
+
+  web-app:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/sunnyday"
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "Mayday"
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"  # Expose your Spring Boot app on port 8080
+    networks:
+      - springboot-network
+
+volumes:
+  db-data:  # Persistent volume for database data
+
+networks:
+  springboot-network:
+    driver: bridge

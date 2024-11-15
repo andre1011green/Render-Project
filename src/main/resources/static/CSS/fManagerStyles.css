@@ -11,12 +11,12 @@ body
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain; 
-  background-color:#CCCCFF; 
+  background-color:#F5F5DC;
 }
 
 #bigDog
 {
-	border: 1px solid red;
+	border: 4px solid #7CFC00;
 	width:15%;
 	background-color: rgb(255,20,147, .7);
 	margin:auto;
@@ -118,4 +118,12 @@ th
 {
    width: 100%;
    height: 50%;
+}
+#usernameDiv
+{
+    text-align:center;
+}
+#passwordDiv
+{
+    text-align:center;
 }
