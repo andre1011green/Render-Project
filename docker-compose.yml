@@ -1,4 +1,3 @@
-
 services:
   db:
     image: dejwcake/postgres16  # You can specify your preferred PostgreSQL version
@@ -13,7 +12,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the local init-db directory to load SQL scripts on container start
 
     ports:
-      - "5433:5432"  # Expose PostgreSQL port for local access (optional)
+      - "5432"  # Expose PostgreSQL port for local access (optional)
     networks:
       - springboot-network
 
@@ -24,6 +23,8 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/sunnyday"
       SPRING_DATASOURCE_USERNAME: "root"
       SPRING_DATASOURCE_PASSWORD: "Mayday"
+      SPRING_JPA_DATABASE-PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: org.postgresql.Driver
     depends_on:
       - db
     ports:
