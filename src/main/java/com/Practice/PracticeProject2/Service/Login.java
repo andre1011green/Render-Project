@@ -1,5 +1,6 @@
 package com.Practice.PracticeProject2.Service;
 
+import com.Practice.PracticeProject2.Model.Tickets;
 import com.Practice.PracticeProject2.Model.User;
 import com.Practice.PracticeProject2.Repositories.TicketRepository;
 import com.Practice.PracticeProject2.Repositories.UserRepository;
@@ -83,10 +84,10 @@ public class Login
      * @param ticketRepository
      * @return List<String>
      */
-    public List<String> AllMyTickets(int id, TicketRepository ticketRepository)
+    public List<Tickets> AllMyTickets(int id, TicketRepository ticketRepository)
     {
         this.ticketRepository = ticketRepository;
-        List<String> myTickets = ticketRepository.findAllByEmployeeID(id);
+        List<Tickets> myTickets = ticketRepository.findAllByEmployeeID(id);
         if(myTickets.isEmpty())
         {
             System.out.println("Did not find any Tickets for given empoyeeid");
@@ -100,10 +101,10 @@ public class Login
      * @param ticketRepository
      * @return List<String>, caught by the Fetch API via managementScript.js
      */
-    public List<String> allTickets(TicketRepository ticketRepository)
+    public List<Tickets> allTickets(TicketRepository ticketRepository)
     {
         this.ticketRepository = ticketRepository;
-        List<String> allTickets = ticketRepository.findAllTickets();
+        List<Tickets> allTickets = ticketRepository.findAllTickets();
         if(allTickets.isEmpty())
         {
             System.out.println("Did not find any Tickets for any employees");

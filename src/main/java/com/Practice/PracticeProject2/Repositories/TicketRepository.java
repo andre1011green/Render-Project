@@ -22,7 +22,7 @@ public interface TicketRepository extends JpaRepository<Tickets, Integer>
      * @return List<String>
      */
     @Query(nativeQuery = true,  value = "SELECT * FROM tickets  WHERE employeeid = :employeeid")
-    List<String> findAllByEmployeeID(@Param("employeeid") int employeeid);
+    List<Tickets> findAllByEmployeeID(@Param("employeeid") int employeeid);
 
     /**
      * This method will add a new ticket to the Database. It uses  @Transactional and @Modifying because it will modify
@@ -76,7 +76,7 @@ public interface TicketRepository extends JpaRepository<Tickets, Integer>
      * @return List<String> , caught by the Fetch API via managementScript.js
      */
     @Query(nativeQuery = true,  value = "SELECT * FROM tickets")
-    List<String> findAllTickets();
+    List<Tickets> findAllTickets();
 
 
     /**

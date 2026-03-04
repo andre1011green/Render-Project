@@ -25,7 +25,7 @@ CREATE TABLE users
     lastname                            VARCHAR(255) NOT NULL,
     phone                               VARCHAR(255) NOT NULL,
     email                               VARCHAR(255) NOT NULL,
-    password                            VARCHAR(60)  NOT NULL,
+    password                            VARCHAR(70)  NOT NULL,
     datehired                           timestamp    NOT NULL,
     datefired                           timestamp,
     CONSTRAINT                          employees_pkey PRIMARY KEY (employeeid),
@@ -86,7 +86,7 @@ CREATE TABLE tickets
 
 
 ticketstatus: Approved, Denied, Pending
-reimbursement_type: 'Advertising', 'Business-Trip', 'Background-Check','Continuing-Education', 'Entertainment', 'Equipment', 'Food', 'Legal', 'Lodging', 'Maintenance',  'Office-Expenses', 'Other', 'Telephone', 'Travel', 'Utilities'
+reimbursement_type: 'Advertising', 'Business-Trip', 'Background-Check','Continuing-Education', 'Entertainment', 'Equipment', 'Food', 'Legal', 'Lodging', 'Maintenance',  'Office-Expenses', 'Other', 'Telephone', 'Travel', 'Utilities', Audit' 
 
 INSERT INTO tickets (description, ticketstatus, amount, datesubmitted, dateresolved, reimbursement_type, employeeid)
 VALUES ('Took Client to industry convention', 'Approved', 750.25, '2024-01-02 9:00:00', null, 'Business-Trip', 1);

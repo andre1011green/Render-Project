@@ -1,5 +1,6 @@
 package com.Practice.PracticeProject2.Controller;
 
+import com.Practice.PracticeProject2.Model.Tickets;
 import com.Practice.PracticeProject2.Model.User;
 import com.Practice.PracticeProject2.Repositories.TicketRepository;
 import com.Practice.PracticeProject2.Repositories.UserRepository;
@@ -8,14 +9,12 @@ import com.Practice.PracticeProject2.Service.CustomUserDetailsService;
 import com.Practice.PracticeProject2.Service.Login;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.source.ConfigurationPropertyName;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
@@ -250,7 +249,7 @@ public class UserController
      */
     @GetMapping("/user/displayMyTickets")
     @ResponseBody
-    public List<String> displayMyTickets(Login mylogin, Principal principal)
+    public List<Tickets> displayMyTickets(Login mylogin, Principal principal)
     {
 
         this.mylogin = mylogin;
@@ -412,7 +411,7 @@ public class UserController
      */
     @GetMapping("/admin/displayAllTickets")
     @ResponseBody
-    public List<String> displayAllTickets(Login mylogin, Principal principal)
+    public List<Tickets> displayAllTickets(Login mylogin, Principal principal)
     {
         this.mylogin = mylogin;
         return mylogin.allTickets(ticketRepository);
@@ -507,6 +506,20 @@ public class UserController
         userRepository.deleteOneUser(employeeid);
         return "redirect:/admin/manageEmployees.html";
     }
+
+    @GetMapping("/error/manager-access-denied")
+    public String managerAccessDenied()
+    {
+        return "/user/managerErrorPage.html"; // The name of the error page view
+    }
+
+    @GetMapping("/error/access-denied")
+    public String accessDenied()
+    {
+        return "/user/accessDeniedPage.html"; // The name of the generic error page view
+    }
+
+
 
 
 }

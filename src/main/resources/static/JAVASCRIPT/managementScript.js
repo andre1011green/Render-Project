@@ -35,40 +35,42 @@ function ether()
               });
 
     fetch('http://localhost:8080/admin/displayAllTickets')
-                  .then(response => response.text())
-                  .then(text => {
-                                  let billy = JSON.parse(text);
-                                  let lengthBilly = billy.length;
-                                  let info = " ";
+                  .then(response => response.json())
+                  .then(tickets => {
+                      let info = "";
+                      tickets.forEach(ticket => {
+                           info += `
+                                      <tr class='suckerFish'>
+                                        <td class='sonOfSuckerFish'>${ticket.ticketID}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.description}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.ticketStatus}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.amount}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.dateSubmitted}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.dateResolved}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.reimbursementType}</td>
+                                        <td class='sonOfSuckerFish'>${ticket.employeeID}</td>
+                                      </tr>
+                                    `;
 
-                                  for(let j = 0; j < lengthBilly; j++)
-                                  {
-                                          data = billy[j]; //Controls which ticket to display
-                                          oneTicketArray = data.split(",");
-                                          for(let i = 0; i < 1; i++)
-                                          {
 
-                                                info += "<tr class = 'suckerFish'>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i]   + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+1] + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+2] + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+3] + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+4] + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+5] + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+6] + "</td>" +
-                                                "<td class='sonOfSuckerFish'>" + oneTicketArray[i+7] + "</td></tr>";
-
-                                          }
-                                  }
-                                   let Outer = "<table id ='AndreTable'><tr>" +
-                                               "<th id='ticketid'>Ticket Number</th><th id='description'>Ticket Description</th>" +
-                                               "<th id='ticketstatus'>Ticket Status</th><th id='amount'>Reimbursement Amount</th>" +
-                                               "<th id='datesubmitted'>Date Submitted </th><th id='dateresolved'>Date Resolved</th>" +
-                                               "<th id='reimbursementtype'>Reimbursement Type </th><th id='employeeid'> Employee ID</th></tr>";
+                                  });
+                                  let Outer = `
+                                                <table id='AndreTable'>
+                                                    <tr>
+                                                        <th id='ticketid'>Ticket Number</th>
+                                                        <th id='description'>Ticket Description</th>
+                                                        <th id='ticketstatus'>Ticket Status</th>
+                                                        <th id='amount'>Reimbursement Amount</th>
+                                                        <th id='datesubmitted'>Date Submitted</th>
+                                                        <th id='dateresolved'>Date Resolved</th>
+                                                        <th id='reimbursementtype'>Reimbursement Type</th>
+                                                        <th id='employeeid'>Employee ID</th>
+                                                    </tr>
+                                            `;;
 
                                    allEmployeesDiv.innerHTML = Outer + info + "</table>";
 
 
                 });
-
+                reimbursementDiv.innerHTML = Outer + info + "</table>";
 }

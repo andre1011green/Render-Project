@@ -10,9 +10,9 @@ RUN ./mvnw clean install -DskipTests
 FROM dejwcake/postgres16
 
 # Set environment variables for the database
-ENV POSTGRES_DB=sunnyday2
-ENV POSTGRES_USER=root
-ENV POSTGRES_PASSWORD=Mayday
+ENV POSTGRES_DB=ers_database
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=mayday
 
 # Copy initialization script
 COPY /init.sql /docker-entrypoint-initdb.d/
@@ -22,8 +22,8 @@ EXPOSE 5432
 
 FROM openjdk:21-jdk
 WORKDIR /app
-COPY Practice-Project.jar   meToo.jar
+COPY /target/Practice-Project-2-0.0.1-SNAPSHOT.jar   moon.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "meToo.jar"]
+ENTRYPOINT ["java", "-jar", "moon.jar"]
 
 
