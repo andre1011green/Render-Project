@@ -1,18 +1,15 @@
 services:
   db:
-    image: dejwcake/postgres16  # You can specify your preferred PostgreSQL version
+    image: dejwcake/postgres18
     environment:
-      POSTGRES_USER: "root"
-      POSTGRES_PASSWORD: "Mayday"
-      POSTGRES_DB: "sunnyday"
-      #POSTGRES_DATA: /var/lib/postgresql/data/db-data
-
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "mayday"
+      POSTGRES_DB: "ers_database"
     volumes:
-      - db-data:/var/lib/postgresql/data  # Persists PostgreSQL data between container restarts
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the local init-db directory to load SQL scripts on container start
-
+      - db-data:/var/lib/postgresql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "5432"  # Expose PostgreSQL port for local access (optional)
+      - "5432:5432"
     networks:
       - springboot-network
 
@@ -20,11 +17,11 @@ services:
   web-app:
     build: .
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/sunnyday"
-      SPRING_DATASOURCE_USERNAME: "root"
-      SPRING_DATASOURCE_PASSWORD: "Mayday"
-      SPRING_JPA_DATABASE-PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
-      SPRING_DATASOURCE_DRIVER-CLASS-NAME: org.postgresql.Driver
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/ers_database"
+      SPRING_DATASOURCE_USERNAME: "postgres"
+      SPRING_DATASOURCE_PASSWORD: "mayday"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
     depends_on:
       - db
     ports:

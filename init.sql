@@ -2,9 +2,9 @@
 --description: this file is used to create tables inside the Docker Container
 
 
-\c sunnyday
+\c ers_database
 
-GRANT ALL PRIVILEGES ON DATABASE sunnyday TO root;
+GRANT ALL PRIVILEGES ON DATABASE ers_database TO postgres;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
