@@ -19,9 +19,10 @@
 	<description>Implement-Custom-User-Details</description>
 
 	<properties>
-		<!-- Boot 4 will eventually require Java 23, but Java 21 works for now -->
 		<java.version>21</java.version>
+		<maven.compiler.release>21</maven.compiler.release>
 	</properties>
+
 
 	<dependencies>
 
