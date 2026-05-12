@@ -1,15 +1,10 @@
-package com.Practice.PracticeProject2.Service;
+package com.Practice.Render.Service;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
-import com.Practice.PracticeProject2.Model.User;
-import com.Practice.PracticeProject2.Repositories.UserRepository;
+import com.Practice.Render.Model.User;
+import com.Practice.Render.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,13 +1,10 @@
-package com.Practice.PracticeProject2.Service;
+package com.Practice.Render.Service;
 
-import com.Practice.PracticeProject2.Model.Tickets;
-import com.Practice.PracticeProject2.Model.User;
-import com.Practice.PracticeProject2.Repositories.TicketRepository;
-import com.Practice.PracticeProject2.Repositories.UserRepository;
-import org.hibernate.annotations.Parameter;
+import com.Practice.Render.Model.Tickets;
+import com.Practice.Render.Repositories.TicketRepository;
+import com.Practice.Render.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;

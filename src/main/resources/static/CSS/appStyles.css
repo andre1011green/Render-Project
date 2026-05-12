@@ -11,7 +11,7 @@ html
 
 body
 {
-   background-image: url("../IMAGES/sky-cloud.jpg");
+   background-image: url("../IMAGES/sky-sky.jpg");
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
@@ -37,7 +37,7 @@ h1
 
 h2
 {
-   color: #B8860B;
+   color: #FF2400;
 }
 
 #userInfo

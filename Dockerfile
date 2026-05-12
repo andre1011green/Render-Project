@@ -1,29 +1,25 @@
-FROM eclipse-temurin:21-jdk
+# ---- Build Stage ----
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
+
+COPY mvnw .
+COPY .mvn .mvn
 COPY pom.xml .
-COPY src ./src
-RUN ./mvnw clean install -DskipTests
+COPY src src
 
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
 
-
-# Use the official PostgreSQL image from the Docker Hub
-FROM dejwcake/postgres18
-
-# Set environment variables for the database
-ENV POSTGRES_DB=ers_database
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=mayday
-
-# Copy initialization script
-COPY /init.sql /docker-entrypoint-initdb.d/
-
-# Expose the default PostgreSQL port EXPOSE
-EXPOSE 5432
-
+# ---- Run Stage ----
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY /target/Practice-Project-2-0.0.1-SNAPSHOT.jar   moon.jar
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "moon.jar"]
+
+ENV PORT=8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
 
 

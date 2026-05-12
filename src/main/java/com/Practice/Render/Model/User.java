@@ -1,4 +1,4 @@
-package com.Practice.PracticeProject2.Model;
+package com.Practice.Render.Model;
 
 import jakarta.persistence.*;
 import java.math.BigInteger;

@@ -1,9 +1,11 @@
-package com.Practice.PracticeProject2;
+package com.Practice.Practice.Render;
 
+import com.Practice.Render.PracticeRenderProject2;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+
+@SpringBootTest(classes = PracticeRenderProject2.class)
 class PracticeProjectApplicationTests {
 
 	@Test

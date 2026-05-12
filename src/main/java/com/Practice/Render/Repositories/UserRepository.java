@@ -1,6 +1,6 @@
-package com.Practice.PracticeProject2.Repositories;
+package com.Practice.Render.Repositories;
 
-import com.Practice.PracticeProject2.Model.User;
+import com.Practice.Render.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

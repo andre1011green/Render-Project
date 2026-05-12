@@ -1,4 +1,4 @@
-package com.Practice.PracticeProject2.SecurityConfiguation;
+package com.Practice.Render.SecurityConfiguration;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

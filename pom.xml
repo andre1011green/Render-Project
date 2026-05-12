@@ -13,10 +13,11 @@
 	</parent>
 
 	<groupId>com.Practice</groupId>
-	<artifactId>Practice-Project-2</artifactId>
+	<artifactId>Render-Project2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Employee Reimbursement System</name>
-	<description>Implement-Custom-User-Details</description>
+	<description>Implement-Custom-User-Details and this is the Render version
+		of the project</description>
 
 	<properties>
 		<java.version>21</java.version>

@@ -1,6 +1,5 @@
-package com.Practice.PracticeProject2.Service;
+package com.Practice.Render.Service;
 
-import com.Practice.PracticeProject2.Model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
