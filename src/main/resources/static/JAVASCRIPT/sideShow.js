@@ -7,8 +7,13 @@
 console.log("LIVE sideShow.js is running");
 
 window.onload = function() {
-      setInterval(start, 3000);
+      console.log("window.onload fired");
+      setInterval(() => {
+            console.log("TICK", i);
+            start();
+      }, 3000);
 };
+
 
 let i = 0;
 
