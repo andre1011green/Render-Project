@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The purpose of this class Login is to get user  login information and ticket information. These methods are called
@@ -141,15 +144,26 @@ public class Login
      */
     public List<String> allEmployees(UserRepository userRepository)
     {
-        this.userRepository = userRepository;
-        List<String> allEmployees = userRepository.findAllCompanyEmployees();
-        if(allEmployees.isEmpty())
-        {
-            System.out.println("Did not find any any employees");
-            System.exit(0);
+        List<Object[]> rows = userRepository.findAllCompanyEmployees();
+        List<String> result = new ArrayList<>();
+
+        if (rows.isEmpty()) {
+            System.out.println("Did not find any employees");
+            return result;
         }
-        return allEmployees;
+
+        for (Object[] row : rows) {
+            // Convert each row into a CSV string
+            String csv = Arrays.stream(row)
+                    .map(obj -> obj == null ? "" : obj.toString())
+                    .collect(Collectors.joining(","));
+            result.add(csv);
+        }
+
+        return result;
     }
+
+
 
 
 }
