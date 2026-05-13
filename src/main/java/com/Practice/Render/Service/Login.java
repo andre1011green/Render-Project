@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -142,14 +143,28 @@ public class Login
     public List<String> allEmployees(UserRepository userRepository)
     {
         this.userRepository = userRepository;
-        List<String> allEmployees = userRepository.findAllCompanyEmployees();
-        if(allEmployees.isEmpty())
-        {
-            System.out.println("Did not find any any employees");
-            System.exit(0);
+
+        List<Object[]> rows = userRepository.findAllCompanyEmployees();
+        List<String> allEmployees = new ArrayList<>();
+
+        if (rows.isEmpty()) {
+            System.out.println("Did not find any employees");
+            return allEmployees;
         }
+
+        for (Object[] row : rows) {
+            // Convert each Object[] into a comma-separated string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < row.length; i++) {
+                sb.append(row[i] == null ? "" : row[i].toString());
+                if (i < row.length - 1) sb.append(",");
+            }
+            allEmployees.add(sb.toString());
+        }
+
         return allEmployees;
     }
+
 
 
 }
