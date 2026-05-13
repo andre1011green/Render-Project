@@ -49,6 +49,11 @@ function start() {
       img.alt = description[i];
       img.title = description[i];
 
+      // FORCE BROWSER TO RELOAD IMAGE
+      img.src = imagePaths[i] + "?v=" + new Date().getTime();
+      img.alt = description[i];
+      img.title = description[i];
+
       i++;
       if (i >= imagePaths.length) {
             i = 0;
