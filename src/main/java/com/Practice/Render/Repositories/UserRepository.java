@@ -29,8 +29,7 @@ public interface UserRepository extends JpaRepository<User, Long>
      * @return List<String> , caught by the Fetch API via devineCreation.js
      */
     @Query(nativeQuery = true,  value = "SELECT * FROM users")
-    List<Object[]> findAllCompanyEmployees();
-
+    List<String> findAllCompanyEmployees();
 
     /**
      * The purpose of this method is to add employees to the Postgres database
