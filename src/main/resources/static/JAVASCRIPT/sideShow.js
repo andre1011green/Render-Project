@@ -4,6 +4,7 @@
    Date:     10/13/2024
    Description: Smooth slideshow for banner images
 */
+console.log("LIVE sideShow.js is running");
 
 window.onload = function() {
       setInterval(start, 3000);
@@ -12,6 +13,7 @@ window.onload = function() {
 let i = 0;
 
 function start() {
+
 
       const imagePaths = [
             "../IMAGES/dilbert1.jpg",
