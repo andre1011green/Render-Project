@@ -4,17 +4,6 @@
    Date:     10/13/2024
    Description: Smooth slideshow for banner images
 */
-console.log("LIVE sideShow.js is running");
-
-window.onload = function() {
-      console.log("window.onload fired");
-      setInterval(() => {
-            console.log("TICK", i);
-            start();
-      }, 3000);
-};
-
-
 let i = 0;
 
 function start() {
@@ -56,10 +45,6 @@ function start() {
       img.alt = description[i];
       img.title = description[i];
 
-      // FORCE BROWSER TO RELOAD IMAGE
-      img.src = imagePaths[i] + "?v=" + new Date().getTime();
-      img.alt = description[i];
-      img.title = description[i];
 
       i++;
       if (i >= imagePaths.length) {

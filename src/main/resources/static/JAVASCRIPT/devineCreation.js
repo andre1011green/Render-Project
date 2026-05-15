@@ -6,27 +6,22 @@
    and to either create or delete employees
 */
 
-window.onload = begin;
-
-function begin()
-{
+async function begin() {
     const peppermintDiv = document.getElementById('companyEmployees');
-
     const BASE_URL = "https://render-project-szn7.onrender.com";
 
-    fetch(`${BASE_URL}/admin/createDeleteEmployees`)
-        .then(response => response.text())
-        .then(text => {
+    try {
+        const response = await fetch(`${BASE_URL}/admin/createDeleteEmployees`);
+        const text = await response.text();
+        const snoopdog = JSON.parse(text);
 
-            let info = " ";
-            let snoopdog = JSON.parse(text);
+        let info = "";
 
-            for (let j = 0; j < snoopdog.length; j++) {
+        for (let j = 0; j < snoopdog.length; j++) {
+            let data = snoopdog[j];
+            let oneEmployeeArray = data.split(",");
 
-                let data = snoopdog[j];
-                let oneEmployeeArray = data.split(",");
-
-                info += `
+            info += `
                 <tr class='suckerFish'>
                     <td class='sonOfSuckerFish'>${oneEmployeeArray[0]}</td>
                     <td class='sonOfSuckerFish'>${oneEmployeeArray[1]}</td>
@@ -41,9 +36,9 @@ function begin()
                     <td class='sonOfSuckerFish'>${oneEmployeeArray[11]}</td>
                 </tr>
             `;
-            }
+        }
 
-            let Outer = `
+        let Outer = `
             <table id='AndreTable'>
                 <tr>
                     <th id='employeeid'>Employee ID</th>
@@ -60,6 +55,9 @@ function begin()
                 </tr>
         `;
 
-            peppermintDiv.innerHTML = Outer + info + "</table>";
-        });
+        peppermintDiv.innerHTML = Outer + info + "</table>";
+
+    } catch (err) {
+        console.error("devineCreation.js fetch failed:", err);
+    }
 }
