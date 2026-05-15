@@ -4,6 +4,8 @@
    Date:     10/13/2024
    Description: Smooth slideshow for banner images
 */
+
+window.onload = setInterval(start, 3000);
 let i = 0;
 
 function start() {
